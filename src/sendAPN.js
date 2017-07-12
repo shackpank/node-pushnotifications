@@ -3,7 +3,7 @@ const apn = require('apn');
 const method = 'apn';
 
 module.exports = (regIds, data, settings) => {
-    const message = new apn.Notification({
+    const options = {
         retryLimit: data.retries || -1,
         expiry: data.expiry || ((data.timeToLive || 28 * 86400) + Math.floor(Date.now() / 1000)),
         priority: data.priority === 'normal' ? 5 : 10,
@@ -29,7 +29,12 @@ module.exports = (regIds, data, settings) => {
         truncateAtWordEnd: data.truncateAtWordEnd,
         collapseId: data.collapseKey,
         mutableContent: data.mutableContent || 0,
-    });
+    };
+    if (data.sound !== null) {
+        options.sound = data.sound || 'ping.aiff';
+    }
+
+    const message = new apn.Notification(options);
     const connection = new apn.Provider(settings.apn);
 
     return connection.send(message, regIds)

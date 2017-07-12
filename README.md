@@ -3,6 +3,11 @@ Node Push Notifications
 
 A node.js module for interfacing with Apple Push Notification, Google Cloud Messaging, Windows Push Notification and Amazon Device Messaging services.
 
+### Changes from source
+
+- Shuts down APN client when the send is complete, fixing a memory leak
+- Allow sending APN pushes with just a badge number, that don't also trigger a sound / vibrate the device
+
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://npmjs.org/package/node-pushnotifications)
 [![NPM version](http://img.shields.io/npm/v/node-pushnotifications.svg?style=flat)](https://npmjs.org/package/node-pushnotifications)
 [![Downloads](http://img.shields.io/npm/dm/node-pushnotifications.svg?style=flat)](https://npmjs.org/package/node-pushnotifications)
