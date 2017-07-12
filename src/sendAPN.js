@@ -10,7 +10,6 @@ module.exports = (regIds, data, settings) => {
         encoding: data.encoding,
         payload: data.custom || {},
         badge: data.badge,
-        sound: data.sound || 'ping.aiff',
         alert: data.alert || {
             title: data.title,
             body: data.body,
